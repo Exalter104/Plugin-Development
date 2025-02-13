@@ -5,4 +5,6 @@ if (isset($exalter)) {
     echo " YES i am exalter";
 
     # code...
+} else {
+    echo "no i am not exalter";
 }
