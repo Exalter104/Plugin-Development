@@ -1,10 +1,28 @@
-<?php
-// is-set : is-set true  if a variable is declared and not null
-$exalter = "Sheraz is a exalter";
-if (isset($exalter)) {
-    echo " YES i am exalter";
+<!DOCTYPE html>
+<html lang="en">
 
-    # code...
-} else {
-    echo "no i am not exalter";
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Is-Set Function</title>
+</head>
+
+<body>
+    <form method="post">
+        <h3>Check your data in Database</h3>
+        <label>Enter username : </label><br>
+        <input type="text" name="username"><br><br>
+        <label>Enter password : </label><br>
+        <input type="password" name="password"><br><br>
+        <input type="submit" name="login" value="Log In">
+    </form>
+</body>
+
+</html>
+<?php
+
+foreach ($_POST as $key => $value) {
+    echo "{$key} = {$value}";
 }
+
+?>
