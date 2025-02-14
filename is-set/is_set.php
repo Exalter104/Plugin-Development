@@ -22,7 +22,20 @@
 <?php
 
 foreach ($_POST as $key => $value) {
-    echo "{$key} = {$value}";
+    echo "{$key} = {$value}<br>";
 }
 
+if (isset($_POST["login"])) {
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+    if (empty($username)) {
+        echo "Username is required";
+        # code...
+    } elseif (empty($password)) {
+        echo "Password is required";
+        # code...
+    } else {
+        // echo "Username is : {$username}<br> password : {$password}";
+    }
+}
 ?>
