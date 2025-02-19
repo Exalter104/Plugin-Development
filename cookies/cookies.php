@@ -1,41 +1,49 @@
+<h3>Set — Update — Delete Cookies</h3>
+<form action="" method="post">
+    <label>Enter username:</label>
+    <input type="text" name="username">
+    <br><br>
+
+    <button type="submit" value="set" name="button">Set Cookie</button>
+    <button type="submit" value="display" name="button">Display Cookie</button>
+    <button type="submit" value="delete" name="button">Delete Cookie</button>
+</form>
+
 <?php
-// Check if a cookie is already set
-$theme = isset($_COOKIE["theme"]) ? $_COOKIE["theme"] : "light";
+if (isset($_POST["button"])) {
+    $button = $_POST["button"];
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $selectedTheme = $_POST["theme"];
-    setcookie("theme", $selectedTheme, time() + (86400 * 30), "/"); // 30 days
-    $theme = $selectedTheme;
-}
-
-?>
-<!DOCTYPE html>
-<html>
-
-<head>
-    <title>Theme Selection</title>
-    <style>
-    body {
-        background-color: <?=$theme=="dark"? "#222": "#fff";
-        ?>;
-        color: <?=$theme=="dark"? "#fff": "#000";
-        ?>;
-        text-align: center;
-        padding: 50px;
+    // Handle "Set Cookie" action
+    if ($button == "set") {
+        if (empty($_POST["username"])) {
+            echo "Please enter a username before setting a cookie.";
+        } else {
+            if (isset($_COOKIE["username"])) {
+                echo "A cookie is already set with the value: " . htmlspecialchars($_COOKIE["username"]) . ". Please delete the existing cookie before setting a new one.";
+            } else {
+                setcookie("username", $_POST["username"], time() + (86400 * 4), "/");
+                echo "New cookie has been set!";
+            }
+        }
     }
-    </style>
-</head>
 
-<body>
-    <h2>Session and Cookies</h2>
-    <form method="post">
-        <select name="theme">
-            <option value="light" <?= $theme == "light" ? "selected" : "" ?>>Light Mode</option>
-            <option value="dark" <?= $theme == "dark" ? "selected" : "" ?>>Dark Mode</option>
-        </select>
-        <button type="submit">Save</button>
-    </form>
-    <p>Current Theme: <b><?= ucfirst($theme); ?></b></p>
-</body>
+    // Handle "Display Cookie" action
+    if ($button == "display") {
+        if (isset($_COOKIE["username"])) {
+            echo "Your current cookie value is: " . htmlspecialchars($_COOKIE["username"]);
+        } else {
+            echo "No cookie found.";
+        }
+    }
 
-</html>
+    // Handle "Delete Cookie" action
+    if ($button == "delete") {
+        if (isset($_COOKIE["username"])) {
+            setcookie("username", "", time() - 3600, "/"); // Expire the cookie
+            echo "Successfully deleted the previous cookie.";
+        } else {
+            echo "No cookie to delete.";
+        }
+    }
+}
+?>
