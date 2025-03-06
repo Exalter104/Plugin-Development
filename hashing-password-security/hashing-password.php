@@ -1,12 +1,3 @@
-<?php
-$hash = "";
-
-if (isset($_POST["submit"])) {
-    $pass = $_POST["password"];
-    $hash = password_hash($pass, PASSWORD_DEFAULT);
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -131,7 +122,15 @@ if (isset($_POST["submit"])) {
             <input type="password" name="password" id="password" placeholder="Type your password..." required>
             <button type="submit" name="submit">Encrypt Password</button>
         </form>
+        <?php
+        $hash = "";
 
+        if (isset($_POST["submit"])) {
+            $pass = $_POST["password"];
+            $hash = password_hash($pass, PASSWORD_DEFAULT);
+        }
+
+        ?>
         <?php if (!empty($hash)): ?>
             <div class="result">
                 <strong>Encrypted Pass:</strong> <?php echo $hash; ?>

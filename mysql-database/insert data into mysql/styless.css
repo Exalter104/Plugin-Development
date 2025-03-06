@@ -1,0 +1,76 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #3a6b79, #072a55);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Container */
+.container {
+    width: 300px;
+    background: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    text-align: center;
+}
+.success {
+    color: green;
+    background: #d4edda;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #c3e6cb;
+    text-align: center;
+}
+
+.error {
+    color: red;
+    background: #f8d7da;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #f5c6cb;
+    text-align: center;
+}
+
+/* Headings */
+h3 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Input Fields */
+input {
+    width: 70%;
+    padding: 15px;
+    margin: 18px 18px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Buttons */
+button {
+    width: 100%;
+    padding: 12px;
+    background: #a75614;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: #005bb5;
+}
+
+/* Error Message */
+.error {
+    color: red;
+    font-size: 14px;
+}
